@@ -1,59 +1,65 @@
+<!-- 
+  @Author: Rafael Direito
+  @Date:   2025-08-12 22:25:34
+  @Last Modified by:   Rafael Direito
+  @Last Modified time: 2025-08-12 22:48:24
+-->
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="" />
-        <meta name="author" content="Rafael Direito (rdireito@av.it.pt)" />
-        <title>5GASP CI/CD - Visualization Dashboard</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Rafael Direito (rdireito@av.it.pt)" />
+    <title>5GASP CI/CD - Visualization Dashboard</title>
 
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/" />
-        
-        <!-- Bootstrap core CSS -->
-        <!-- Theme JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-        <link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-        <link rel="icon" type="image/png" href="static/img/cropped-favicon-32x32.png" sizes="32x32">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/" />
+
+    <!-- Bootstrap core CSS -->
+    <!-- Theme JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="static/img/cropped-favicon-32x32.png" sizes="32x32">
 
 
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
             }
+        }
+    </style>
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-        </style>
+    <!-- Custom styles for this template -->
+    <link href="static/css/sticky-footer-navbar.css" rel="stylesheet" />
+</head>
 
-        <!-- Custom styles for this template -->
-        <link href="static/css/sticky-footer-navbar.css" rel="stylesheet" />
-    </head>
-
-    <body class="d-flex flex-column h-100">
-        <header>
-            <!-- Fixed navbar -->
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <div class="container-fluid">
-                    <img class="d-inline-block align-text-top" height="24" src="static/img/5GASPlogo-960x251.png"
-                        style="margin: auto" alt="5GASP Logo" />
-                    <a class="navbar-brand" style="margin-left: 10px" href="#">Test Visualization Dashboard</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <!--
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <img class="d-inline-block align-text-top" height="24" src="static/img/5GASPlogo-960x251.png"
+                    style="margin: auto" alt="5GASP Logo" />
+                <a class="navbar-brand" style="margin-left: 10px" href="#">Test Visualization Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <!--
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
@@ -61,61 +67,68 @@
                                 <a class="nav-link" href="#">Link</a>
                             </li>
                             -->
-                        </ul>
-                        <form class="d-flex">
-                            <button class="btn btn-sm btn-success" type="button" onclick="return refresh_results();" style="margin-right:20px"> <i class="fa fa-sync" aria-hidden="true"></i> Refresh Results</button>
-                            <button class="btn btn-danger" type="submit" onclick="return logout()">Log out</button>
-                        </form>
-                    </div>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-sm btn-success" type="button" onclick="return refresh_results();"
+                            style="margin-right:20px"> <i class="fa fa-sync" aria-hidden="true"></i> Refresh
+                            Results</button>
+                        <button class="btn btn-danger" type="submit" onclick="return logout()">Log out</button>
+                    </form>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
+    </header>
 
-        <!-- Begin page content -->
-        <main class="flex-shrink-0">
-            <div class="container">
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
 
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Test Base Information</h4>
-                                <div class="card-text mt-4">
-                                    <span style="font-weight: 700;">Test Id: </span> <span id="base_info_test_id"></span>
-                                    <br>
-                                    <span style="font-weight: 700;">NetApp Id: </span> <span id="base_info_netapp_id"></span>
-                                    <br>
-                                    <span style="font-weight: 700;">Network Service Id: </span> <span id="base_info_network_service_id"></span>
-                                    <br>
-                                    <span style="font-weight: 700;">Testbed: </span> <span id="base_info_testbed"></span>
-                                    <br>
-                                    <span style="font-weight: 700;">Test Started At: </span> <span id="base_info_start_time"></span>
-                                    <br>
-                                    <span style="font-weight: 700;">Test Status: </span id="base_info_test_status"> 
-                                        <span style="color: green; font-weight: 700; display: none" id="base_info_test_passed"> Passed </span>
-                                        <span style="color: red; font-weight: 700; display: none;" id="base_info_test_failed"> Failed </span>
+            <div class="row mt-5">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Test Base Information</h4>
+                            <div class="card-text mt-4">
+                                <span style="font-weight: 700;">Test Id: </span> <span id="base_info_test_id"></span>
+                                <br>
+                                <span style="font-weight: 700;">NetApp Id: </span> <span
+                                    id="base_info_netapp_id"></span>
+                                <br>
+                                <span style="font-weight: 700;">Network Service Id: </span> <span
+                                    id="base_info_network_service_id"></span>
+                                <br>
+                                <span style="font-weight: 700;">Testbed: </span> <span id="base_info_testbed"></span>
+                                <br>
+                                <span style="font-weight: 700;">Test Started At: </span> <span
+                                    id="base_info_start_time"></span>
+                                <br>
+                                <span style="font-weight: 700;">Test Status: </span id="base_info_test_status">
+                                <span style="color: green; font-weight: 700; display: none" id="base_info_test_passed">
+                                    Passed </span>
+                                <span style="color: red; font-weight: 700; display: none;" id="base_info_test_failed">
+                                    Failed </span>
 
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Testing Process Stages</h4>
-                                <div class="card mt-4">
-                                    <div class="table-responsive testing_process_stages">
-                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="col-2">Timestamp</th>
-                                                    <th class="col-2">Stage Name</th>
-                                                    <th class="col-2">Stage Status</th>
-                                                    <th class="col-6">Observations</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="testing_process_status_tbody">
-                                                <!--
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Testing Process Stages</h4>
+                            <div class="card mt-4">
+                                <div class="table-responsive testing_process_stages">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-2">Timestamp</th>
+                                                <th class="col-2">Stage Name</th>
+                                                <th class="col-2">Stage Status</th>
+                                                <th class="col-6">Observations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="testing_process_status_tbody">
+                                            <!--
                                                 <tr>
                                                     <td>03/Sep/2021 14:38:01</td>
                                                     <td>Setup Environment</td>
@@ -123,34 +136,34 @@
                                                     <td>No Observations</td>
                                                 </tr>
                                                 -->
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Tests Performed</h4>
-                                <div class="card mt-4">
-                                    <div class="table-responsive tests_performed ">
-                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="col-1">Test ID</th>
-                                                    <th class="col-3">Test Name</th>
-                                                    <th class="col-1">Start</th>
-                                                    <th class="col-1">End</th>
-                                                    <th class="col-1">Test Status</th>
-                                                    <th class="col-3">Test Description</th>
-                                                    <th class="col-1">Test Log</th>
-                                                    <th class="col-1">Test Report</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tests_performed_tbody">
-                                                <!--
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tests Performed</h4>
+                            <div class="card mt-4">
+                                <div class="table-responsive tests_performed ">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-1">Test ID</th>
+                                                <th class="col-3">Test Name</th>
+                                                <th class="col-1">Start</th>
+                                                <th class="col-1">End</th>
+                                                <th class="col-1">Test Status</th>
+                                                <th class="col-3">Test Description</th>
+                                                <th class="col-1">Test Log</th>
+                                                <th class="col-1">Test Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tests_performed_tbody">
+                                            <!--
                                                 <tr>
                                                     <td>Transmission Speed</td>
                                                     <td>00:02:01</td>
@@ -161,67 +174,110 @@
                                                     <td><a href="https://www.google.com">Test Report</a></td>
                                                 </tr>
                                                 -->
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5 mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Collected Metrics</h4>
-                                <div class="mt-4 row" >
-                                    <div class="col-12">
-                                        <p>
-                                            To get the metrics collected during the testing and validation process, please open Chronograf's Dashboard.
-                                        </p>
-                                    </div>
-                                    <div class="col-4 offset-4 table-responsive tests_performed ">
-                                        <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="col-12" colspan=2>Chronograf</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="col-4">URL</td>
-                                                    <td class="col-8"> <a target="_blank" href="http://10.0.12.226:8888/sources/2/dashboards/1"> Chronograf's Dashboard</a></td>
-                                                </tr>
-                                                 <tr>
-                                                    <td class="col-4">Username</td>
-                                                    <td class="col-8">admin</td>
-                                                </tr>
-                                                 <tr>
-                                                    <td class="col-4">Password</td>
-                                                    <td class="col-8">admin</td>
-                                                </tr>
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div>
+                </div>
+                <div class="col-12 mt-5 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Collected Metrics</h4>
+                            <div class="mt-4 row">
+                                <div class="col-12">
+                                    <p>
+                                        To get the metrics collected during the testing and validation process, please
+                                        open the following dashboards.
+                                    </p>
+                                </div>
+                                <div class="col-10 offset-1 table-responsive tests_performed ">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-8">URL</th>
+                                                <th class="col-2">Username</th>
+                                                <th class="col-2">Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="metrics_collected_tbody">
+                                            <!--
+                                            <tr>
+                                                <td class="col-8"> <a target="_blank"
+                                                        href="http://10.0.12.226:8888/sources/2/dashboards/1">
+                                                        http://10.0.12.226:8888/sources/2/dashboards/1</a>
+                                                </td>
+                                                <td class="col-2">admin</td>
+                                                <td class="col-2">admin</td>
+                                            </tr>
+                                            -->
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-5 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Collected Logs</h4>
+                            <div class="mt-4 row">
+                                <div class="col-12">
+                                    <p>
+                                        To get the logs collected during the testing and validation process, please
+                                        open the following dashboards.
+                                    </p>
+                                </div>
+                                <div class="col-10 offset-1 table-responsive tests_performed ">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-8">URL</th>
+                                                <th class="col-2">Username</th>
+                                                <th class="col-2">Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="logs_collected_tbody">
+                                            <!--
+                                            <tr>
+                                                <td class="col-8"> <a target="_blank"
+                                                        href="http://10.0.12.226:8888/sources/2/dashboards/1">
+                                                        http://10.0.12.226:8888/sources/2/dashboards/1</a>
+                                                </td>
+                                                <td class="col-2">admin</td>
+                                                <td class="col-2">admin</td>
+                                            </tr>
+                                            -->
+
+
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 
-        <footer class="footer mt-auto py-3 bg-light">
-            <div class="container">
-                <span class="text-muted">Copyright ©2021 All rights reserved | 5GASP Project</span>
-            </div>
-        </footer>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Copyright ©2021 All rights reserved | 5GASP Project</span>
+        </div>
+    </footer>
 
-              
-        <!-- Custom JS -->
-        <script src="static/js/urls.js"></script>
-        <script src="static/js/pages/test-information.js"></script>
-        <script src="static/js/utils.js"></script>
-        <script src="static/js/constants.js"></script>
-    </body>
+
+    <!-- Custom JS -->
+    <script src="static/js/urls.js"></script>
+    <script src="static/js/pages/test-information.js"></script>
+    <script src="static/js/utils.js"></script>
+    <script src="static/js/constants.js"></script>
+</body>
 
 </html>
