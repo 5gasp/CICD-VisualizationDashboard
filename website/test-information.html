@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="icon" type="image/png" href="static/img/cropped-favicon-32x32.png" sizes="32x32">
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <style>
@@ -57,6 +59,9 @@
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <button id="results_with_success" class="btn btn-sm btn-success" style="pointer-events: none;" type="button">Results Obtained With Success</button>
+                <button id="results_with_error" class="btn btn-sm btn-danger" style="pointer-events: none; display:none;" type="button">Error in Obtaining Results</button>
+                
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <!--
@@ -107,6 +112,13 @@
                                     Passed </span>
                                 <span style="color: red; font-weight: 700; display: none;" id="base_info_test_failed">
                                     Failed </span>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-sm" 
+                                        style="margin-top:10px;"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#testingDescriptorModal">
+                                    View Testing Descriptor
+                                </button>
 
                             </div>
                         </div>
@@ -115,27 +127,37 @@
                 <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Testing Process Stages</h4>
+                            <h4 class="card-title">Testing Agents Involved In Testing Process</h4>
                             <div class="card mt-4">
-                                <div class="table-responsive testing_process_stages">
+                                <div class="table-responsive testing_agents">
                                     <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
                                         <thead>
                                             <tr>
-                                                <th class="col-2">Timestamp</th>
-                                                <th class="col-2">Stage Name</th>
-                                                <th class="col-2">Stage Status</th>
-                                                <th class="col-6">Observations</th>
+                                                <th class="col-1">ID</th>
+                                                <th class="col-1">Type</th>
+                                                <th class="col-1">Testing Stages Performed</th>
+                                                <th class="col-1">Test Cases Performed</th>
+                                                <th class="col-2">Name</th>
+                                                <th class="col-2">Service Order</th>
+                                                <th class="col-2">URL</th>
+                                                <th class="col-1">Username</th>
+                                                <th class="col-1">Password</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="testing_process_status_tbody">
+                                        <tbody id="testing_agents_tbody">
                                             <!--
-                                                <tr>
-                                                    <td>03/Sep/2021 14:38:01</td>
-                                                    <td>Setup Environment</td>
-                                                    <td class="td_success">Success</td>
-                                                    <td>No Observations</td>
-                                                </tr>
-                                                -->
+                                            <tr>
+                                                <td>1</td>
+                                                <td>TESTBED</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>RAN Agent</td>
+                                                <td>inoohnfasu8323l539-3549ufa</td>
+                                                <td>http://1.1.1.1:8000</td>
+                                                <td>admin</td>
+                                                <td>doaihsfn o</td>
+                                            </tr>
+                                            -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -143,44 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mt-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Tests Performed</h4>
-                            <div class="card mt-4">
-                                <div class="table-responsive tests_performed ">
-                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-1">Test ID</th>
-                                                <th class="col-3">Test Name</th>
-                                                <th class="col-1">Start</th>
-                                                <th class="col-1">End</th>
-                                                <th class="col-1">Test Status</th>
-                                                <th class="col-3">Test Description</th>
-                                                <th class="col-1">Test Log</th>
-                                                <th class="col-1">Test Report</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tests_performed_tbody">
-                                            <!--
-                                                <tr>
-                                                    <td>Transmission Speed</td>
-                                                    <td>00:02:01</td>
-                                                    <td>00:02:01</td>
-                                                    <td class="td_success">Passed</td>
-                                                    <td>Testing the transmission speed between OBU and vOBU</td>
-                                                    <td><a href="https://www.google.com">Test Log</a></td>
-                                                    <td><a href="https://www.google.com">Test Report</a></td>
-                                                </tr>
-                                                -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-12 mt-5 mb-5">
                     <div class="card">
                         <div class="card-body">
@@ -262,6 +247,126 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Testing Process Status</h4>
+                            <div class="card mt-4">
+                                <div class="table-responsive testing_process_status">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-2">Timestamp</th>
+                                                <th class="col-2">Stage Name</th>
+                                                <th class="col-2">Stage Status</th>
+                                                <th class="col-6">Observations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="testing_process_status_tbody">
+                                            <!--
+                                                <tr>
+                                                    <td>03/Sep/2021 14:38:01</td>
+                                                    <td>Setup Environment</td>
+                                                    <td class="td_success">Success</td>
+                                                    <td>No Observations</td>
+                                                </tr>
+                                                -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Testing Process Stages</h4>
+                            <div class="card mt-4">
+                                <div class="table-responsive testing_process_stages">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-2">Stage ID</th>
+                                                <th class="col-2">Testing Agent</th>
+                                                <th class="col-2">Test Cases Performed</th>
+                                                <th class="col-3">Testing Pipeline</th>
+                                                <th class="col-3">Test Execution Log</th>
+                                                <!--
+                                                <th class="col-6">Timestamp</th>
+                                                <th class="col-6">Status</th>
+                                                -->
+                                            </tr>
+                                        </thead>
+                                        <tbody id="testing_process_stages_tbody">
+                                            <!--
+                                                <tr>
+                                                    <td>03/Sep/2021 14:38:01</td>
+                                                    <td>Setup Environment</td>
+                                                    <td class="td_success">Success</td>
+                                                    <td>No Observations</td>
+                                                </tr>
+                                                -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tests Performed</h4>
+                            <div class="card mt-4">
+                                <div class="table-responsive tests_performed ">
+                                    <table class="table table-bordered table-striped" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-1">Test ID</th>
+                                                <th class="col-3">Test Name</th>
+                                                <th class="col-1">Start</th>
+                                                <th class="col-1">End</th>
+                                                <th class="col-1">Test Status</th>
+                                                <th class="col-3">Test Description</th>
+                                                <th class="col-1">Test Log</th>
+                                                <th class="col-1">Test Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tests_performed_tbody">
+                                            <tr>
+                                            <!-- First column spans the remaining 10 units -->
+                                            <td colspan="6">Test Stage with ID 1 - Performed through Testing Agent with ID 2</td>
+                                            <!-- Last two columns -->
+                                            <td>Console Log</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary btn-sm" 
+                                                        data-bs-toggle="modal" data-bs-target="#testingPipelineModal">
+                                                    Testing Stage Pipeline
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                            <!--
+                                                <tr>
+                                                    <td>Transmission Speed</td>
+                                                    <td>00:02:01</td>
+                                                    <td>00:02:01</td>
+                                                    <td class="td_success">Passed</td>
+                                                    <td>Testing the transmission speed between OBU and vOBU</td>
+                                                    <td><a href="https://www.google.com">Test Log</a></td>
+                                                    <td><a href="https://www.google.com">Test Report</a></td>
+                                                </tr>
+                                                -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </main>
@@ -272,6 +377,57 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="testingPipelineModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Testing Pipeline</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" style="white-space: pre-wrap; word-wrap: break-word;">
+            <!-- Content injected dynamically -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="consoleLogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Console Log</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" style="white-space: pre-wrap; word-wrap: break-word;">
+                <!-- Content injected dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>>
+    </div>
+
+    <div class="modal fade" id="testingDescriptorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Testing Descriptor (YAML)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" style="white-space: pre-wrap; word-wrap: break-word;">
+                <!-- Content injected dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>>
+    </div>
 
     <!-- Custom JS -->
     <script src="static/js/urls.js"></script>

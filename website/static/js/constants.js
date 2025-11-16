@@ -19,3 +19,13 @@ let pages = {
     console_log: "console-log.html",
     test_files: "test-files.html",
 };
+
+function signalErrorInObtainingResults() {
+    $("#results_with_success").hide();
+    $("#results_with_error").show();
+}
+
+function signalSuccessInObtainingResults() {
+    $("#results_with_success").show();
+    $("#results_with_error").hide();
+}

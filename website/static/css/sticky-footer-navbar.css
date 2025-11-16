@@ -6,7 +6,7 @@ main > .container {
   padding: 60px 15px 0;
 }
 
-
+/*
 .testing_process_stages table td{
     text-align: center;
     vertical-align: middle
@@ -23,6 +23,43 @@ main > .container {
     text-align: left;
     vertical-align: middle
 }
+*/
+
+.testing_agents table td{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_agents table th{
+    text-align: center;
+    vertical-align: middle
+}
+
+.testing_process_stages table td{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_process_stages table th{
+    text-align: center;
+    vertical-align: middle
+}
+
+
+.testing_process_status table td{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_process_status table th{
+    text-align: center;
+    vertical-align: middle
+}
+.testing_process_status table td:last-child {
+    text-align: left;
+    vertical-align: middle
+}
+
+
+
+
 
 .tests_performed table td{
     text-align: center;
