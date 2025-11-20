@@ -35,6 +35,7 @@ function refresh_results() {
     signalSuccessInObtainingResults();
     get_test_process_stages();
     get_tests_performed()
+    get_test_base_info()
 }
 
 setInterval(refresh_results, 10000);
