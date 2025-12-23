@@ -193,17 +193,21 @@ function add_stage_to_testing_stages_row(table_id, stage) {
     pipelineContents[stage.id] = stage.pipeline;
     consoleLogContents[stage.id] = stage.console_log;
 
+    console.log("STAGE:");
+    console.log(stage);
+
     let row = `
         <tr style="background-color: #303030 !important; color:white !important; font-weight: bold;">
             <td>${stage.id}</td>
             <td>${stage.testing_agent_id}</td>
             <td>${stage.test_cases.length}</td>
+            <td>${stage.network_qos_profile}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-md" 
                         data-bs-toggle="modal" 
                         data-bs-target="#testingPipelineModal"
                         data-stage-id="${stage.id}">
-                    Testing Stage Pipeline
+                    Pipeline Config
                 </button>
             </td>
             <td>
@@ -211,7 +215,7 @@ function add_stage_to_testing_stages_row(table_id, stage) {
                         data-bs-toggle="modal" 
                         data-bs-target="#consoleLogModal"
                         data-stage-id="${stage.id}">
-                    Testing Stage Execution Log
+                    Execution Log
                 </button>
             </td>
         </tr>
@@ -234,7 +238,7 @@ function add_stage_to_testing_stages_row(table_id, stage) {
         row = `
             <tr>
                 <td colspan="3">${date} ${time}</td>
-                <td colspan="2">${status.state}</td>
+                <td colspan="3">${status.state}</td>
             </tr>
         `
         $(table_id).append(row);
